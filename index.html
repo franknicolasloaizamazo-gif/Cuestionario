@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Quiz - Reserved Seats</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;color:white;background:linear-gradient(135deg,#111827,#4f46e5,#ec4899);background-size:300% 300%;animation:bg 10s infinite alternate}
+@keyframes bg{to{background-position:100% 100%}}
+.card{width:100%;max-width:700px;padding:30px;border-radius:28px;background:rgba(255,255,255,.14);backdrop-filter:blur(18px);box-shadow:0 20px 50px rgba(0,0,0,.35);animation:show .8s}
+@keyframes show{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.badge{display:inline-block;background:rgba(255,255,255,.2);padding:8px 14px;border-radius:30px;margin-bottom:15px;font-weight:bold}
+h1{text-align:center;font-size:clamp(28px,6vw,42px);margin-bottom:10px}.subtitle{text-align:center;color:#ddd;margin-bottom:25px}
+.photo{background:white;padding:10px;border-radius:20px;margin-bottom:25px}.photo img{width:100%;display:block;border-radius:12px}
+.question{text-align:center;font-size:22px;font-weight:bold;margin-bottom:20px}
+.answer{display:block;width:100%;padding:17px;margin:12px 0;border:0;border-radius:16px;background:white;color:#222;font-size:17px;font-weight:bold;text-align:left;cursor:pointer;transition:.3s}
+.answer:hover{transform:translateX(7px) scale(1.02);box-shadow:0 10px 25px #0005}
+.letter{display:inline-flex;width:36px;height:36px;align-items:center;justify-content:center;border-radius:50%;background:#4f46e5;color:white;margin-right:10px}
+#result{display:none;margin-top:22px;padding:22px;border-radius:18px;line-height:1.6}.correct{background:#dcfce7;color:#166534}.wrong{background:#fee2e2;color:#991b1b}
+#retry{display:none;width:100%;padding:14px;margin-top:14px;border:0;border-radius:14px;background:#ffffff33;color:white;font-weight:bold;cursor:pointer}
+.footer{text-align:center;margin-top:20px;color:#ddd;font-size:13px}
+</style>
+</head>
+<body>
+<div class="card">
+<div class="badge">🇬🇧 ENGLISH QUIZ</div>
+<h1>Where would you see this sign?</h1>
+<p class="subtitle">Look carefully and choose the correct answer.</p>
+<div class="photo"><img src="seats-reserved.jpeg" alt="Seats Reserved sign"></div>
+<div class="question">Where would you see this sign?</div>
+<button class="answer" onclick="answer('A')"><span class="letter">A</span>In a park</button>
+<button class="answer" onclick="answer('B')"><span class="letter">B</span>In a theater</button>
+<button class="answer" onclick="answer('C')"><span class="letter">C</span>At a bus stop</button>
+<div id="result"></div>
+<button id="retry" onclick="resetQuiz()">🔄 Try Again</button>
+<div class="footer">English Class • Interactive Question</div>
+</div>
+<script>
+function answer(choice){
+const r=document.getElementById("result"),retry=document.getElementById("retry");
+r.style.display="block";retry.style.display="block";
+if(choice==="B"){r.className="correct";r.innerHTML="<h2>🎉 Correct!</h2><p>The sign says <b>SEATS RESERVED</b>. It means that specific seats have been saved for certain people. This is commonly seen in a <b>theater</b>, where people can reserve seats when they buy tickets.</p><p><b>✅ Correct answer: B. In a theater</b></p>";}
+else if(choice==="A"){r.className="wrong";r.innerHTML="<h2>❌ Incorrect</h2><p>A park normally has public spaces and benches, but this sign refers to seats that have been reserved for specific people.</p><p><b>💡 Correct answer: B. In a theater</b></p>";}
+else{r.className="wrong";r.innerHTML="<h2>❌ Incorrect</h2><p>A bus stop normally shows information about routes, buses or schedules. <b>SEATS RESERVED</b> is used for reserved seats.</p><p><b>💡 Correct answer: B. In a theater</b></p>";}}
+function resetQuiz(){document.getElementById("result").style.display="none";document.getElementById("retry").style.display="none";}
+</script>
+</body>
+</html>
